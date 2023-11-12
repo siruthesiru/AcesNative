@@ -4,8 +4,8 @@ import { View } from "../../components/Themed";
 import { StyleSheet } from "react-native";
 import { Image } from "react-native";
 import { Pressable } from "react-native";
-import Linking from "react-native";
-import Button from "react-native-paper";
+import { Linking } from "react-native";
+import { Button } from "react-native-paper";
 
 import DetailItem from "../job-details/item-detail/DetailItem";
 
@@ -32,13 +32,19 @@ export default function ProfileScreen() {
 					<DetailItem itemName="Graduated" itemValue="2021" />
 				</View>
 				<View style={styles.detailsSection}>
-					<DetailItem itemName={`Skills \t`} itemValue="Web Development" />
+					<DetailItem
+						itemName={`Skills \t`}
+						itemValue="Web Development, SCRUM, DevOps, "
+					/>
+					<Button style={styles.editButton} mode="contained">
+						Edit Profile
+					</Button>
 					<Button
-						// icon="camera"
+						style={styles.logOutButton}
 						mode="contained"
-						onPress={() => Linking.openURL(data[0].job_apply_link)}
+						labelStyle={{ color: "#4D0400" }}
 					>
-						Apply Now
+						Log-Out
 					</Button>
 				</View>
 			</View>
@@ -53,14 +59,14 @@ const styles = StyleSheet.create({
 		justifyContent: "flex-start",
 	},
 	title: {
-		fontSize: 20,
+		fontSize: 24,
 		fontWeight: "bold",
 		marginTop: 20,
 	},
 	separator: {
 		marginTop: 30,
 		height: 1,
-		width: "80%",
+		width: "60%",
 	},
 	imageContainer: {
 		flex: 1,
@@ -83,7 +89,7 @@ const styles = StyleSheet.create({
 	},
 	detailsSection: {
 		marginLeft: "20%",
-		maxWidth: "90%",
+		maxWidth: "80%",
 		marginVertical: 15,
 	},
 	detailsHeader: {
@@ -98,5 +104,15 @@ const styles = StyleSheet.create({
 	detailsItem: {
 		flexDirection: "row",
 		marginVertical: 2,
+		fontSize: 16,
+	},
+	editButton: {
+		maxWidth: "80%",
+		marginTop: 100,
+	},
+	logOutButton: {
+		maxWidth: "80%",
+		marginTop: 10,
+		backgroundColor: "#ff6961",
 	},
 });

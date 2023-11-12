@@ -9,7 +9,6 @@ import { FlatList, ScrollView } from "react-native-gesture-handler";
 import { useState } from "react";
 import { useRouter } from "expo-router";
 
-import EditScreenInfo from "../../components/EditScreenInfo";
 import { Text, View } from "../../components/Themed";
 import { icons, images, SIZES, COLORS } from "../../constants";
 import searchStyle from "../../components/home/jobs/jobs.style";
