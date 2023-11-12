@@ -2,10 +2,10 @@ import { configureStore } from "@reduxjs/toolkit";
 // import ToastMiddleware from "../middleware/ToastMiddleware";
 // import thunk from "redux-thunk";
 
-import authenticationSlice from "./authenticationSlice";
-import alumniSlice from "./alumniSlice";
-import alumniUserSlice from "./alumniUserSlice";
-import alumniProfileSlice from "./alumniProfileSlice";
+import authenticationSlice from "../app/slices/authenticationSlice";
+import alumniSlice from "../app/slices/alumniSlice";
+import alumniUserSlice from "../app/slices/alumniUserSlice";
+import alumniProfileSlice from "../app/slices/alumniProfileSlice";
 
 export default configureStore({
 	reducer: {

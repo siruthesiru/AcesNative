@@ -1,54 +1,144 @@
 // External modules
-import { Text } from "../../components/Themed";
-import { View } from "../../components/Themed";
-import { StyleSheet } from "react-native";
-import { Image } from "react-native";
-import { Pressable } from "react-native";
-import { Linking } from "react-native";
-import { Button } from "react-native-paper";
+import { Text, View } from "../../components/Themed";
+import {
+	StyleSheet,
+	Image,
+	Pressable,
+	Linking,
+	ScrollView,
+} from "react-native";
+import { Button, DataTable } from "react-native-paper";
+import {
+	Table,
+	Row,
+	Rows,
+	Cell,
+	TableWrapper,
+} from "react-native-table-component";
 
 import DetailItem from "../job-details/item-detail/DetailItem";
+import TableRow from "../../components/home/profile/TableRow";
+import { COLORS } from "../../constants";
 
 const profilePicture = require("../../assets/images/pfp.png");
 
 export default function ProfileScreen() {
+	const userDetails = {
+		firstName: "Yehudi",
+		lastName: "Santillan III",
+		middleName: "",
+		gender: "Male",
+		birthdate: "July 13, 1999",
+		address: "Tipolo, Bohol",
+		uscId: "18101308",
+		email: "yudisantillan@gmail.com",
+		number: "09452998777",
+		program: "Bachelor of Science in Information Technology",
+		yearGraduated: "2021",
+		employmentStatus: "Unemployed",
+		companyName: "N/A",
+		companyAddres: "N/A",
+		occupation: "N/A",
+		skills: ["React Native", "Dart", "Node"],
+	};
 	return (
-		<View style={styles.container}>
-			<Image source={profilePicture} style={styles.image} />
-			<Text style={styles.title}>Yehudi Santillan</Text>
-			<View
-				style={styles.separator}
-				lightColor="#eee"
-				darkColor="rgba(255,255,255,0.1)"
-			/>
-			<View style={styles.detailsContainer}>
-				<View style={styles.detailsSection}>
-					<DetailItem itemName="ID Number" itemValue="18101308" />
-					<DetailItem
-						itemName={`Program \t`}
-						itemValue="Information Technology"
+		<ScrollView showsVerticalScrollIndicator={false}>
+			<View style={styles.container}>
+				<Image source={profilePicture} style={styles.image} />
+				<Text style={styles.title}>Yehudi Santillan</Text>
+				<View style={styles.detailsContainer}>
+					<View
+						style={styles.separator}
+						lightColor="#eee"
+						darkColor="rgba(255,255,255,0.1)"
 					/>
-					<DetailItem itemName="Edu. Level" itemValue="Bachelor" />
-					<DetailItem itemName="Graduated" itemValue="2021" />
-				</View>
-				<View style={styles.detailsSection}>
-					<DetailItem
-						itemName={`Skills \t`}
-						itemValue="Web Development, SCRUM, DevOps, "
+					<Text style={styles.subtitle}>Personal Information</Text>
+					<Table style={styles.table}>
+						<TableRow itemName="Gender" itemValue={userDetails.gender} />
+						<TableRow itemName="Birthdate" itemValue={userDetails.birthdate} />
+						<TableRow itemName="Address" itemValue={userDetails.address} />
+					</Table>
+
+					<View
+						style={styles.separator}
+						lightColor="#eee"
+						darkColor="rgba(255,255,255,0.1)"
 					/>
-					<Button style={styles.editButton} mode="contained">
-						Edit Profile
-					</Button>
-					<Button
-						style={styles.logOutButton}
-						mode="contained"
-						labelStyle={{ color: "#4D0400" }}
-					>
-						Log-Out
-					</Button>
+					<Text style={styles.subtitle}>Account Information</Text>
+					<Table style={styles.table}>
+						<TableRow itemName="USC ID" itemValue={userDetails.uscId} />
+						<TableRow itemName="Email" itemValue={userDetails.email} />
+						<TableRow itemName="Contact No." itemValue={userDetails.number} />
+					</Table>
+
+					<View
+						style={styles.separator}
+						lightColor="#eee"
+						darkColor="rgba(255,255,255,0.1)"
+					/>
+					<Text style={styles.subtitle}>Academic Information</Text>
+					<Table style={styles.table}>
+						<TableRow itemName="Program" itemValue={userDetails.program} />
+						<TableRow
+							itemName="Graduated"
+							itemValue={userDetails.yearGraduated}
+						/>
+					</Table>
+
+					<View
+						style={styles.separator}
+						lightColor="#eee"
+						darkColor="rgba(255,255,255,0.1)"
+					/>
+					<Text style={styles.subtitle}>Work Information</Text>
+					<Table style={styles.table}>
+						<TableRow
+							itemName="Employment"
+							itemValue={userDetails.employmentStatus}
+						/>
+						<TableRow
+							itemName="Company Name"
+							itemValue={userDetails.companyName}
+						/>
+						<TableRow
+							itemName="Company Add"
+							itemValue={userDetails.companyAddres}
+						/>
+					</Table>
+
+					<View
+						style={styles.separator}
+						lightColor="#eee"
+						darkColor="rgba(255,255,255,0.1)"
+					/>
+					<Text style={styles.subtitle}>Skills Information</Text>
+					<Table style={styles.table}>
+						<TableRow itemName="Skills" itemValue={userDetails.skills[0]} />
+						<TableRow itemName="" itemValue={userDetails.skills[1]} />
+						<TableRow itemName="" itemValue={userDetails.skills[2]} />
+					</Table>
+
+					<View
+						style={styles.separator}
+						lightColor="#eee"
+						darkColor="rgba(255,255,255,0.1)"
+					/>
+
+					<View style={styles.detailsSection}>
+						<Button style={styles.editButton} mode="contained">
+							Edit Profile
+						</Button>
+						<Button
+							style={styles.logOutButton}
+							mode="contained"
+							labelStyle={{ color: "#4D0400" }}
+						>
+							Log-Out
+						</Button>
+					</View>
 				</View>
 			</View>
-		</View>
+		</ScrollView>
 	);
 }
 
@@ -66,7 +156,8 @@ const styles = StyleSheet.create({
 	separator: {
 		marginTop: 30,
 		height: 1,
-		width: "60%",
+		width: "80%",
+		alignSelf: "center",
 	},
 	imageContainer: {
 		flex: 1,
@@ -88,18 +179,15 @@ const styles = StyleSheet.create({
 		// justifyContent: "center",
 	},
 	detailsSection: {
-		marginLeft: "20%",
+		marginLeft: "15%",
 		maxWidth: "80%",
 		marginVertical: 15,
 	},
-	detailsHeader: {
-		alignItems: "center",
-		marginVertical: 15,
-	},
 	subtitle: {
-		fontSize: 20,
+		fontSize: 18,
 		fontWeight: "bold",
-		marginVertical: 15,
+		marginVertical: 20,
+		marginLeft: "10%",
 	},
 	detailsItem: {
 		flexDirection: "row",
@@ -108,11 +196,19 @@ const styles = StyleSheet.create({
 	},
 	editButton: {
 		maxWidth: "80%",
-		marginTop: 100,
+		marginTop: 30,
+		marginBottom: 15,
 	},
 	logOutButton: {
 		maxWidth: "80%",
-		marginTop: 10,
+		marginVertical: 10,
 		backgroundColor: "#ff6961",
+	},
+	table: {
+		borderWidth: 0,
+		marginLeft: "10%",
+	},
+	tableHeader: {
+		display: "none",
 	},
 });
