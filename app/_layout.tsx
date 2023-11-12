@@ -9,7 +9,7 @@ import { SplashScreen, Stack } from "expo-router";
 import { useEffect } from "react";
 import { useColorScheme } from "react-native";
 
-import { authorize, signOut } from "react-native-app-auth";
+// import { authorize, signOut } from 'react-native-app-auth';
 
 import { PaperProvider } from "react-native-paper";
 
@@ -52,32 +52,32 @@ export default function RootLayout() {
 function RootLayoutNav() {
 	const colorScheme = useColorScheme();
 
-	const handleAuthorize = async () => {
-		try {
-			const result = await authorize({
-				issuer: "https://YOUR_ISSUER",
-				clientId: "YOUR_CLIENT_ID",
-				redirectUrl: "YOUR_REDIRECT_URI",
-				scopes: ["openid", "profile", "email"],
-				serviceConfiguration: {
-					authorizationEndpoint: "https://YOUR_AUTHORIZATION_ENDPOINT",
-					tokenEndpoint: "https://YOUR_TOKEN_ENDPOINT",
-				},
-			});
-			console.log(result);
-		} catch (error) {
-			console.error(error);
-		}
-	};
+	// const handleAuthorize = async () => {
+	// 	try {
+	// 	  const result = await authorize({
+	// 		issuer: 'https://YOUR_ISSUER',
+	// 		clientId: 'YOUR_CLIENT_ID',
+	// 		redirectUrl: 'YOUR_REDIRECT_URI',
+	// 		scopes: ['openid', 'profile', 'email'],
+	// 		serviceConfiguration: {
+	// 		  authorizationEndpoint: 'https://YOUR_AUTHORIZATION_ENDPOINT',
+	// 		  tokenEndpoint: 'https://YOUR_TOKEN_ENDPOINT',
+	// 		},
+	// 	  });
+	// 	  console.log(result);
+	// 	} catch (error) {
+	// 	  console.error(error);
+	// 	}
+	//   };
 
-	const handleSignOut = async () => {
-		try {
-			await signOut(Option);
-			console.log("User signed out");
-		} catch (error) {
-			console.error(error);
-		}
-	};
+	//   const handleSignOut = async () => {
+	// 	try {
+	// 	  await signOut(Option);
+	// 	  console.log('User signed out');
+	// 	} catch (error) {
+	// 	  console.error(error);
+	// 	}
+	//   };
 
 	return (
 		<PaperProvider>
@@ -85,10 +85,10 @@ function RootLayoutNav() {
 				<Stack>
 					<Stack.Screen name="(tabs)" options={{ headerShown: false }} />
 					<Stack.Screen
-						name="modal"
+						name="faq"
 						options={{
 							presentation: "modal",
-							headerTitle: "Log-Out",
+							headerTitle: "Frequently Asked Questions",
 							headerTitleAlign: "center",
 						}}
 					/>

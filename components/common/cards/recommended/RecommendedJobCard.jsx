@@ -28,7 +28,7 @@ const RecommendedJobCard = ({ item, selectedJob, handleCardPress }) => {
 				<Text style={styles.jobName(selectedJob, item)} numberOfLines={1}>
 					{item.job_title}
 				</Text>
-				<Text style={styles.location} numberOfLines={4}>
+				<Text style={styles.description} numberOfLines={4}>
 					{item.job_description}
 				</Text>
 				{/* <View style={styles.infoWrapper}>

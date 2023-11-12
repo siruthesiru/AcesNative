@@ -29,8 +29,8 @@ export default function TabLayout() {
 				name="index"
 				options={{
 					title: "Feed",
+					headerTitle: "News and Events",
 					headerTitleAlign: "center",
-					headerTitle: "Events & Announcements",
 					tabBarIcon: ({ color }) => (
 						<TabBarIcon name="newspaper-o" color={color} />
 					),
@@ -55,13 +55,13 @@ export default function TabLayout() {
 				}}
 			/>
 			<Tabs.Screen
-				name="faq"
+				name="applications"
 				options={{
-					title: "FAQ",
+					title: "Applications",
 					headerTitleAlign: "center",
-					headerTitle: "Frequently Asked Questions",
+					headerTitle: "Job Applications",
 					tabBarIcon: ({ color }) => (
-						<TabBarIcon name="question-circle" color={color} />
+						<TabBarIcon name="black-tie" color={color} />
 					),
 				}}
 			/>
@@ -74,11 +74,11 @@ export default function TabLayout() {
 						<TabBarIcon name="user-circle-o" color={color} />
 					),
 					headerRight: () => (
-						<Link href="/modal" asChild>
+						<Link href="/faq" asChild>
 							<Pressable>
 								{({ pressed }) => (
 									<FontAwesome
-										name="sign-out"
+										name="question-circle"
 										size={25}
 										color={Colors[colorScheme ?? "light"].text}
 										style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}

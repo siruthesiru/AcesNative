@@ -1,8 +1,13 @@
-import { StyleSheet, Image, Button, Pressable } from "react-native";
+// External modules
+import { Text } from "../../components/Themed";
+import { View } from "../../components/Themed";
+import { StyleSheet } from "react-native";
+import { Image } from "react-native";
+import { Pressable } from "react-native";
+import Linking from "react-native";
+import Button from "react-native-paper";
 
-import EditScreenInfo from "../../components/EditScreenInfo";
-import { Text, View } from "../../components/Themed";
-import { RectButton } from "react-native-gesture-handler";
+import DetailItem from "../job-details/item-detail/DetailItem";
 
 const profilePicture = require("../../assets/images/pfp.png");
 
@@ -16,9 +21,27 @@ export default function ProfileScreen() {
 				lightColor="#eee"
 				darkColor="rgba(255,255,255,0.1)"
 			/>
-			<Text style={styles.info}>Position: Software Developer</Text>
-			<Text style={styles.info}>Course: Information Systems</Text>
-			<Text style={styles.info}>Date Graduated: May 20, 2018</Text>
+			<View style={styles.detailsContainer}>
+				<View style={styles.detailsSection}>
+					<DetailItem itemName="ID Number" itemValue="18101308" />
+					<DetailItem
+						itemName={`Program \t`}
+						itemValue="Information Technology"
+					/>
+					<DetailItem itemName="Edu. Level" itemValue="Bachelor" />
+					<DetailItem itemName="Graduated" itemValue="2021" />
+				</View>
+				<View style={styles.detailsSection}>
+					<DetailItem itemName={`Skills \t`} itemValue="Web Development" />
+					<Button
+						// icon="camera"
+						mode="contained"
+						onPress={() => Linking.openURL(data[0].job_apply_link)}
+					>
+						Apply Now
+					</Button>
+				</View>
+			</View>
 		</View>
 	);
 }
@@ -35,7 +58,7 @@ const styles = StyleSheet.create({
 		marginTop: 20,
 	},
 	separator: {
-		marginVertical: 30,
+		marginTop: 30,
 		height: 1,
 		width: "80%",
 	},
@@ -51,5 +74,29 @@ const styles = StyleSheet.create({
 	},
 	info: {
 		paddingTop: 10,
+	},
+	detailsContainer: {
+		width: "100%",
+		flex: 1,
+		// alignItems: "center",
+		// justifyContent: "center",
+	},
+	detailsSection: {
+		marginLeft: "20%",
+		maxWidth: "90%",
+		marginVertical: 15,
+	},
+	detailsHeader: {
+		alignItems: "center",
+		marginVertical: 15,
+	},
+	subtitle: {
+		fontSize: 20,
+		fontWeight: "bold",
+		marginVertical: 15,
+	},
+	detailsItem: {
+		flexDirection: "row",
+		marginVertical: 2,
 	},
 });

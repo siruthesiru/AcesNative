@@ -43,9 +43,10 @@ const Recommendedjobs = () => {
 					<Text>Something went wrong</Text>
 				) : (
 					<FlatList
+						showsHorizontalScrollIndicator={false}
 						data={data}
 						renderItem={({ item }) => (
-							<PopularJobCard
+							<RecommendedJobCard
 								item={item}
 								selectedJob={selectedJob}
 								handleCardPress={handleCardPress}

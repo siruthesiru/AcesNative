@@ -13,7 +13,8 @@ import EditScreenInfo from "../../components/EditScreenInfo";
 import { Text, View } from "../../components/Themed";
 import { icons, images, SIZES, COLORS } from "../../constants";
 import searchStyle from "../../components/home/jobs/jobs.style";
-import Recommendedjobs from "../../components/home/recommended/Recommendedjob";
+import Recommendedjobs from "../../components/home/recommended/Recommendedjobs";
+import Coursejobs from "../../components/home/by_course/Coursejobs";
 
 const jobTypes = ["Full-Time", "Part-Time"];
 
@@ -22,56 +23,62 @@ export default function JobsScreen() {
 	const router = useRouter();
 
 	return (
-		<View style={styles.container}>
-			<Text style={styles.welcomeMessage}>
-				Work with the department's partners!
-			</Text>
-			<View style={searchStyle.searchContainer}>
-				<View style={searchStyle.searchWrapper}>
-					<TextInput
-						style={searchStyle.searchInput}
-						value=""
-						onChange={() => {}}
-						placeholder="Search jobs"
+		<ScrollView showsVerticalScrollIndicator={false}>
+			<View style={styles.container}>
+				<Text style={styles.welcomeMessage}>
+					Work with the department's partners!
+				</Text>
+				<View style={searchStyle.searchContainer}>
+					<View style={searchStyle.searchWrapper}>
+						<TextInput
+							style={searchStyle.searchInput}
+							value=""
+							onChange={() => {}}
+							placeholder="Search jobs"
+						/>
+					</View>
+					<Pressable style={searchStyle.searchBtn}>
+						<Image
+							source={icons.search}
+							resizeMode="contain"
+							style={styles.searchBtnImage}
+						/>
+					</Pressable>
+				</View>
+				<View style={searchStyle.tabsContainer}>
+					<FlatList
+						data={jobTypes}
+						renderItem={({ item }) => (
+							<Pressable
+								style={[
+									styles.tab,
+									activeJobType === item && styles.tabSelected,
+								]}
+								onPress={() => {
+									setActiveJobType(item);
+									router.push("/search/${item}");
+								}}
+							>
+								<Text
+									style={[
+										styles.tabText,
+										activeJobType === item && styles.tabTextSelected,
+									]}
+								>
+									{item}
+								</Text>
+							</Pressable>
+						)}
+						keyExtractor={(item) => item}
+						contentContainerStyle={{ columnGap: SIZES.small }}
+						horizontal
 					/>
 				</View>
-				<Pressable style={searchStyle.searchBtn}>
-					<Image
-						source={icons.search}
-						resizeMode="contain"
-						style={styles.searchBtnImage}
-					/>
-				</Pressable>
-			</View>
-			<View style={searchStyle.tabsContainer}>
-				<FlatList
-					data={jobTypes}
-					renderItem={({ item }) => (
-						<Pressable
-							style={[styles.tab, activeJobType === item && styles.tabSelected]}
-							onPress={() => {
-								setActiveJobType(item);
-								router.push("/search/${item}");
-							}}
-						>
-							<Text
-								style={[
-									styles.tabText,
-									activeJobType === item && styles.tabTextSelected,
-								]}
-							>
-								{item}
-							</Text>
-						</Pressable>
-					)}
-					keyExtractor={(item) => item}
-					contentContainerStyle={{ columnGap: SIZES.small }}
-					horizontal
-				/>
-			</View>
 
-			<Recommendedjobs />
-		</View>
+				<Recommendedjobs />
+				<Coursejobs />
+			</View>
+		</ScrollView>
 	);
 }
 

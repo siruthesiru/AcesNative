@@ -3,10 +3,10 @@ import { StyleSheet } from "react-native";
 import EditScreenInfo from "../../components/EditScreenInfo";
 import { Text, View } from "../../components/Themed";
 
-export default function EventsScreen() {
+export default function Notifications() {
 	return (
 		<View style={styles.container}>
-			<Text style={styles.title}>Events</Text>
+			<Text style={styles.title}>Notifications</Text>
 			<View
 				style={styles.separator}
 				lightColor="#eee"

@@ -10,7 +10,7 @@ import Colors from "../../../constants/Colors";
 
 export default function Feed() {
 	return (
-		<ScrollView>
+		<ScrollView showsVerticalScrollIndicator={false}>
 			<View style={styles.container}>
 				<Card style={styles.cardContainer}>
 					<Card.Cover
@@ -21,7 +21,9 @@ export default function Feed() {
 					/>
 
 					<Card.Content style={styles.textSection}>
-						<Text style={styles.title}>Kyocera is hiring!</Text>
+						<Text style={styles.title} numberOfLines={1}>
+							Kyocera is hiring!
+						</Text>
 						<Text style={styles.date}>October 25, 2023 </Text>
 						<Text style={styles.body}>
 							Graduating students and Alumni are invited to join the virtual job
@@ -39,7 +41,9 @@ export default function Feed() {
 					/>
 
 					<Card.Content style={styles.textSection}>
-						<Text style={styles.title}>Fullscale is now hiring</Text>
+						<Text style={styles.title} numberOfLines={1}>
+							Fullscale is now hiring
+						</Text>
 						<Text style={styles.date}>October 15, 2023 </Text>
 						<Text style={styles.body}>
 							Python, C#/ASP .NET, PHP, Ruby on Rails, JAVA, Mobile dev-
@@ -57,7 +61,9 @@ export default function Feed() {
 					/>
 
 					<Card.Content style={styles.textSection}>
-						<Text style={styles.title}>Hiring: Android Developer</Text>
+						<Text style={styles.title} numberOfLines={1}>
+							Hiring: Android Developer
+						</Text>
 						<Text style={styles.date}>October 9, 2023 </Text>
 						<Text style={styles.body} numberOfLines={2}>
 							Cradle is looking for an Android Developer and Backend Developer.
@@ -84,7 +90,7 @@ const styles = StyleSheet.create({
 		borderWidth: 1,
 	},
 	cover: {
-		height: "50%",
+		height: "75%",
 		width: "100%",
 	},
 	date: {

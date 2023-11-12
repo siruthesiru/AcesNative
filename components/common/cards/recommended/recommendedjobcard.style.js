@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
 
-import { COLORS, FONT, SHADOWS, SIZES } from "../../../../constants";
+import { COLORS, SHADOWS, SIZES } from "../../../../constants";
 
 const styles = StyleSheet.create({
 	container: (selectedJob, item) => ({
@@ -15,7 +15,8 @@ const styles = StyleSheet.create({
 	logoContainer: (selectedJob, item) => ({
 		width: 50,
 		height: 50,
-		backgroundColor: selectedJob === item.job_id ? "#FFF" : COLORS.white,
+		backgroundColor:
+			selectedJob === item.job_id ? COLORS.lightWhite : COLORS.white,
 		borderRadius: SIZES.medium,
 		justifyContent: "center",
 		alignItems: "center",
@@ -46,9 +47,9 @@ const styles = StyleSheet.create({
 		fontSize: SIZES.medium - 2,
 		color: selectedJob === item.job_id ? COLORS.white : COLORS.primary,
 	}),
-	location: {
+	description: {
 		fontSize: SIZES.medium - 2,
-		color: "#B3AEC6",
+		color: COLORS.gray,
 	},
 });
 

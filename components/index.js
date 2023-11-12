@@ -1,8 +1,7 @@
-import ScreenHeaderBtn from "./common/header/ScreenHeaderBtn";
+// import ScreenHeaderBtn from "./common/header/ScreenHeaderBtn";
 
 // home screen
-import Welcome from "./home/jobs/Welcome";
-import Nearbyjobs from "./home/nearby/Nearbyjobs";
+import Coursejobs from "./home/by_course/Coursejobs";
 import Recommendedjobs from "./home/recommended/Recommendedjobs";
 
 // job details screen
@@ -13,17 +12,15 @@ import { default as JobFooter } from "./jobdetails/footer/Footer";
 import Specifics from "./jobdetails/specifics/Specifics";
 
 // common
-import NearbyJobCard from "./common/cards/nearby/NearbyJobCard";
+import CourseJobCard from "./common/cards/by_course/CourseJobCard";
 
 export {
-	ScreenHeaderBtn,
-	Welcome,
-	Nearbyjobs,
+	Coursejobs,
 	Recommendedjobs,
 	Company,
 	JobTabs,
 	JobAbout,
 	JobFooter,
 	Specifics,
-	NearbyJobCard,
+	CourseJobCard,
 };

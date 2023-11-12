@@ -6,7 +6,7 @@ import { COLORS } from "../../constants";
 import { ScrollView } from "react-native-gesture-handler";
 import { Link } from "expo-router";
 
-export default function FAQ() {
+export default function Applications() {
 	return (
 		<ScrollView>
 			<View style={styles.container}>
