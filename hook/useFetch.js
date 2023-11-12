@@ -6,11 +6,13 @@ const useFetch = (endpoint, query) => {
 	const [isLoading, setIsLoading] = useState(false);
 	const [error, setError] = useState(null);
 
+	const jobAPI = process.env.RAPID_API;
+
 	const options = {
 		method: "GET",
 		url: `https://jsearch.p.rapidapi.com/${endpoint}`,
 		headers: {
-			"X-RapidAPI-Key": "75243dc37amsh02e634cb1182125p15c015jsnc37e77bdad2a",
+			"X-RapidAPI-Key": { jobAPI },
 			"X-RapidAPI-Host": "jsearch.p.rapidapi.com",
 		},
 		params: { ...query },
