@@ -1,8 +1,6 @@
 import FontAwesome from "@expo/vector-icons/FontAwesome";
-import { Link, Tabs } from "expo-router";
+import { Link, Stack } from "expo-router";
 import { Pressable, useColorScheme } from "react-native";
-
-import ProtectedRoute from "../../utils/protectedRoute";
 
 import Colors from "../../constants/Colors";
 import { useRouter } from "expo-router";
@@ -10,34 +8,51 @@ import { useRouter } from "expo-router";
 /**
  * You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
  */
-function TabBarIcon(props) {
-	return <FontAwesome size={28} style={{ marginBottom: -3 }} {...props} />;
-}
 
 export default function TabLayout() {
 	const colorScheme = useColorScheme();
 	const router = useRouter();
 
 	return (
-		<Tabs
+		<Stack
 			screenOptions={{
 				tabBarActiveTintColor: Colors[colorScheme ?? "light"].tint,
+				headerLeft: () => {
+					<Pressable>
+						{({ pressed }) => (
+							<FontAwesome
+								name="question-circle"
+								size={25}
+								color={Colors[colorScheme ?? "light"].text}
+								style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
+							/>
+						)}
+					</Pressable>;
+				},
 			}}
 		>
-			{/* <ProtectedRoute /> */}
-
-			<Tabs.Screen
+			<Stack.Screen
 				name="index"
 				options={{
-					title: "Feed",
-					headerTitle: "News and Events",
-					headerTitleAlign: "center",
-					tabBarIcon: ({ color }) => (
-						<TabBarIcon name="newspaper-o" color={color} />
-					),
+					title: "Public Page",
+					headerShown: false,
 				}}
 			/>
-			<Tabs.Screen
+			<Stack.Screen
+				name="login"
+				options={{
+					title: "Login as Alumni",
+					headerTitleAlign: "center",
+				}}
+			/>
+			<Stack.Screen
+				name="register"
+				options={{
+					title: "Register as Alumni",
+					headerTitleAlign: "center",
+				}}
+			/>
+			{/* <Tabs.Screen
 				name="jobs"
 				options={{
 					title: "Jobs",
@@ -89,7 +104,7 @@ export default function TabLayout() {
 						</Link>
 					),
 				}}
-			/>
-		</Tabs>
+			/> */}
+		</Stack>
 	);
 }

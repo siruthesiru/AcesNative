@@ -1,16 +1,16 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Navigate, Outlet } from "react-router";
-import AccountVerify from "../components/accountverify/index";
-import { clearAccount } from "../app/authenticationSlice";
+import { Navigate, Outlet } from "expo-router";
+import AccountVerify from "../components/accountverify";
+import { clearAccount } from "../app/slices/authenticationSlice";
 
-const ProtectedRoute = ({ userRole }) => {
+const ProtectedRoute = () => {
 	const { isSucceed, role, isAccess } = useSelector(
 		(state) => state.authentication
 	);
 	const dispatch = useDispatch();
 
-	const isAuthorized = role === userRole;
+	const isAuthorized = role === "ALUMNI";
 
 	if (isAccess === false) {
 		if (!isAuthorized || !isSucceed) {

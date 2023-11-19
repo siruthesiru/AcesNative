@@ -6,13 +6,14 @@ const styles = StyleSheet.create({
 	container: {
 		flex: 1,
 		alignItems: "center",
+		justifyContent: "center",
 		paddingVertical: 10,
 		paddingHorizontal: 10,
 		width: "100%",
 	},
 	cardContainer: {
 		height: 250,
-		width: "90%",
+		width: "100%",
 		marginVertical: 10,
 		borderColor: COLORS.gray2,
 		borderWidth: 1,

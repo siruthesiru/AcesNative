@@ -9,7 +9,11 @@ import { SplashScreen, Stack } from "expo-router";
 import { useEffect } from "react";
 import { useColorScheme } from "react-native";
 
+import { persistor, store } from "../app/slices/store";
+
 import { PaperProvider } from "react-native-paper";
+import { Provider } from "react-redux";
+import { PersistGate } from "redux-persist/integration/react";
 
 export {
 	// Catch any errors thrown by the Layout component.
@@ -51,21 +55,28 @@ function RootLayoutNav() {
 	const colorScheme = useColorScheme();
 
 	return (
-		<PaperProvider>
-			<ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
-				<Stack>
-					<Stack.Screen name="(auth)" options={{ headerShown: false }} />
-					<Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-					<Stack.Screen
-						name="faq"
-						options={{
-							presentation: "modal",
-							headerTitle: "Frequently Asked Questions",
-							headerTitleAlign: "center",
-						}}
-					/>
-				</Stack>
-			</ThemeProvider>
-		</PaperProvider>
+		<Provider store={store}>
+			<PersistGate loading={null} persistor={persistor}>
+				<PaperProvider>
+					<ThemeProvider
+						value={colorScheme === "dark" ? DarkTheme : DefaultTheme}
+					>
+						<Stack>
+							<Stack.Screen name="(auth)" options={{ headerShown: false }} />
+							<Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+
+							<Stack.Screen
+								name="faq"
+								options={{
+									presentation: "modal",
+									headerTitle: "Frequently Asked Questions",
+									headerTitleAlign: "center",
+								}}
+							/>
+						</Stack>
+					</ThemeProvider>
+				</PaperProvider>
+			</PersistGate>
+		</Provider>
 	);
 }

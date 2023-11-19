@@ -14,7 +14,7 @@
 		"app/(tabs)/profile.jsx",
 		"app/(tabs)/notifications.jsx",
 		"app/(tabs)/jobs.jsx",
-		"app/(tabs)/index.jsx",
+		"app/(tabs)/feed.jsx",
 		"app/(tabs)/applications.jsx",
 		"app/(tabs)/_layout.jsx",
 		"app/modal.jsx",
