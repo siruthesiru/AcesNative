@@ -14,8 +14,6 @@ import {
 import { COLORS } from "../../../constants";
 
 const TableRow = ({ itemName, itemValue }) => {
-	console.log(itemName);
-	console.log(itemValue);
 	return (
 		<View>
 			<TableWrapper style={styles.tableRow}>

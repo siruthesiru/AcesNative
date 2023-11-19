@@ -1,16 +1,10 @@
-import {
-	StyleSheet,
-	TextInput,
-	Pressable,
-	Image,
-	ViewStyle,
-} from "react-native";
+import { StyleSheet, TextInput, Image, Pressable } from "react-native";
 import { FlatList, ScrollView } from "react-native-gesture-handler";
 import { useState } from "react";
 import { useRouter } from "expo-router";
 
 import { Text, View } from "../../components/Themed";
-import { icons, images, SIZES, COLORS } from "../../constants";
+import { icons, SIZES, COLORS } from "../../constants";
 import searchStyle from "../../components/home/jobs/jobs.style";
 import Recommendedjobs from "../../components/home/recommended/Recommendedjobs";
 import Coursejobs from "../../components/home/by_course/Coursejobs";
@@ -60,7 +54,7 @@ export default function JobsScreen() {
 							>
 								<Text
 									style={[
-										styles.tabText,
+										// styles.tabText,
 										activeJobType === item && styles.tabTextSelected,
 									]}
 								>
@@ -111,13 +105,13 @@ const styles = StyleSheet.create({
 		borderColor: COLORS.gray, // Default border color
 	},
 	tabSelected: {
-		borderColor: COLORS.white, // Border color when selected
+		backgroundColor: COLORS.white, // Border color when selected
 	},
-	tabText: {
-		color: COLORS.gray, // Default text color
-	},
+	// tabText: {
+	// 	backgroundColor: COLORS.gray, // Default text color
+	// },
 	tabTextSelected: {
-		color: COLORS.white, // Text color when selected
+		backgroundColor: COLORS.white, // Text color when selected
 	},
 	welcomeMessage: {
 		fontSize: 20,

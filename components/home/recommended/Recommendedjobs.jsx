@@ -1,12 +1,8 @@
 import { useState } from "react";
 import { useRouter } from "expo-router";
-import {
-	View,
-	Text,
-	TouchableOpacity,
-	FlatList,
-	ActivityIndicator,
-} from "react-native";
+import { TouchableOpacity, FlatList, ActivityIndicator } from "react-native";
+
+import { View, Text } from "../../../components/Themed";
 
 import styles from "./recommendedjobs.style";
 import { COLORS, SIZES } from "../../../constants";

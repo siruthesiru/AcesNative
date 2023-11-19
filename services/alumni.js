@@ -16,15 +16,17 @@ import {
 	getJobError,
 	getJobs,
 	setErrorMessage,
-} from "../app/alumniUserSlice";
-import { toast } from "react-toastify";
+} from "../app/slices/alumniUserSlice";
+
+// import { Toast as toast } from "toastify-react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const axiosInstance = axios.create({
 	baseURL: `${process.env.REACT_APP_BASE_URL}/Alumni`,
 });
 
 axiosInstance.interceptors.request.use((config) => {
-	config.headers = { authorization: "Bearer " + localStorage.getItem("token") };
+	config.headers = { authorization: "Bearer " + AsyncStorage.getItem("token") };
 	return config;
 });
 
@@ -94,10 +96,10 @@ export const EditProfile = async (dispatch, credentials) => {
 		});
 		if (response.data.isEditSucceed) {
 			dispatch(editProfile(response.data));
-			toast.success(response.data.message);
+			// toast.success(response.data.message);
 		} else {
 			dispatch(setErrorMessage(response.data.message));
-			toast.error(response.data.message);
+			// toast.error(response.data.message);
 		}
 		return response.data.isEditSucceed;
 	} catch (error) {
@@ -138,7 +140,7 @@ export const ApplyJob = async (dispatch, job) => {
 			dispatch(applyJob(response.data));
 		} else {
 			dispatch(setErrorMessage(response.data.message));
-			toast.error(response.data.message);
+			// toast.error(response.data.message);
 		}
 		return response.data.isPostSucceed;
 	} catch (error) {
@@ -151,9 +153,9 @@ export const DeleteAppliedJob = async (dispatch, id) => {
 	try {
 		await axiosInstance.delete(`/Jobs/Delete-Applied-Jobs/${id}`);
 		dispatch(deleteApplyJob(id));
-		toast.success("Application deleted successfully");
+		// toast.success("Application deleted successfully");
 	} catch {
 		dispatch(deleteApplyJobError());
-		toast.error("An error occurred while deleting the application");
+		// toast.error("An error occurred while deleting the application");
 	}
 };

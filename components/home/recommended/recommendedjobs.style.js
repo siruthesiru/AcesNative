@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
 	},
 	headerTitle: {
 		fontSize: SIZES.large,
-		color: COLORS.white,
+		// color: COLORS.white,
 	},
 	headerBtn: {
 		fontSize: SIZES.medium,
@@ -22,7 +22,9 @@ const styles = StyleSheet.create({
 		alignSelf: "flex-end",
 	},
 	cardsContainer: {
-		marginTop: SIZES.medium,
+		// marginTop: SIZES.medium,
+		paddingVertical: 2,
+		paddingHorizontal: 2,
 		marginHorizontal: 0,
 	},
 });

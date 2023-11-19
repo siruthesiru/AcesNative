@@ -17,10 +17,6 @@ const PendingApplications = () => {
 	data.pop();
 	data.pop();
 	data.pop();
-	data.pop();
-	data.pop();
-	data.pop();
-	data.pop();
 
 	return (
 		<View style={styles.container}>

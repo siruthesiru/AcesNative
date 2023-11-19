@@ -3,13 +3,13 @@ import { Avatar, Button, Card } from "react-native-paper";
 
 import { COLORS } from "../../../constants";
 
-import EditScreenInfo from "../../EditScreenInfo";
+// import EditScreenInfo from "../../EditScreenInfo";
 import { Text, View } from "../../Themed";
 import { ScrollView } from "react-native-gesture-handler";
-import Colors from "../../../constants/Colors";
+// import Colors from "../../../constants/Colors";
 
 import styles from "./feed.style";
-import { useRouter } from "expo-router";
+import { useRouter, Link } from "expo-router";
 
 export default function Feed() {
 	const router = useRouter();
@@ -47,12 +47,7 @@ export default function Feed() {
 		<ScrollView showsVerticalScrollIndicator={false}>
 			<View style={styles.container}>
 				{news.map((item) => (
-					<Pressable
-						key={item.id}
-						onPress={() => {
-							router.push(`../../../app/news-details/${item.id}`);
-						}}
-					>
+					<Link key={item.id} href={`../${item.id}`}>
 						<Card style={styles.cardContainer}>
 							<Card.Cover
 								style={styles.cover}
@@ -73,7 +68,7 @@ export default function Feed() {
 								</Text>
 							</Card.Content>
 						</Card>
-					</Pressable>
+					</Link>
 				))}
 			</View>
 		</ScrollView>

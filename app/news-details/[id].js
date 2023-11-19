@@ -4,7 +4,7 @@ import { Fragment, useCallback, useState } from "react";
 
 import { Button } from "react-native-paper";
 
-import { checkImageURL } from "../../../utils";
+import { checkImageURL } from "../../utils";
 
 import {
 	headerBackButtonMenuEnabled,
@@ -17,11 +17,11 @@ import {
 	Linking,
 } from "react-native";
 
-import { Text, View } from "../../Themed";
-import DetailItem from "../../../app/job-details/item-detail/DetailItem";
+import { Text, View } from "../../components/Themed";
+import DetailItem from "../job-details/item-detail/DetailItem";
 
-import { COLORS, SIZES } from "../../../constants";
-import useFetch from "../../../hook/useFetch";
+import { COLORS, SIZES } from "../../constants";
+import useFetch from "../../hook/useFetch";
 
 const JobDetails = () => {
 	const params = useSearchParams();

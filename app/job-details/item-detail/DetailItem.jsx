@@ -2,8 +2,6 @@ import { StyleSheet } from "react-native";
 import { Text, View } from "../../../components/Themed";
 
 const DetailItem = ({ itemName, itemValue }) => {
-	console.log(itemName);
-	console.log(itemValue);
 	return (
 		<View style={styles.container}>
 			<View style={styles.detailsItem}>

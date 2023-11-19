@@ -1,4 +1,8 @@
-import { alumniProfile, alumniProfileError } from "../app/alumniProfileSlice";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import {
+	alumniProfile,
+	alumniProfileError,
+} from "../app/slices/alumniProfileSlice";
 import axios from "axios";
 
 const axiosInstance = axios.create({
@@ -6,7 +10,7 @@ const axiosInstance = axios.create({
 });
 
 axiosInstance.interceptors.request.use((config) => {
-	config.headers = { authorization: "Bearer " + localStorage.getItem("token") };
+	config.headers = { authorization: "Bearer " + AsyncStorage.getItem("token") };
 	return config;
 });
 
@@ -50,7 +54,7 @@ export const getAlumniProfile = async (dispatch) => {
 	} catch (error) {
 		console.error("Error:", error);
 		const errorMessage =
-			error.response?.data || "There is something wrong when fetching a data";
+			error.response?.data || "There is something wrong when fetching data";
 		dispatch(alumniProfileError({ message: errorMessage }));
 	}
 };

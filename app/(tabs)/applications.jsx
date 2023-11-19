@@ -25,7 +25,6 @@ export default function Applications() {
 	return (
 		<ScrollView showsVerticalScrollIndicator={false}>
 			<View style={styles.container}>
-				{/* <Text style={styles.welcomeMessage}></Text> */}
 				<View style={searchStyle.tabsContainer}>
 					<FlatList
 						data={applicationTypes}

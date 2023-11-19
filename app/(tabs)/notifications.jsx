@@ -4,7 +4,7 @@ import { Card } from "react-native-paper";
 
 import { COLORS } from "../../constants";
 
-import EditScreenInfo from "../../components/EditScreenInfo";
+// import EditScreenInfo from "../../components/EditScreenInfo";
 import { Text, View } from "../../components/Themed";
 
 export default function Notifications() {

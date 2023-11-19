@@ -1,7 +1,8 @@
 import React from "react";
 import { useRouter } from "expo-router";
-import { View, Text, TouchableOpacity, ActivityIndicator } from "react-native";
+import { TouchableOpacity, ActivityIndicator } from "react-native";
 
+import { View, Text } from "../../../components/Themed";
 import styles from "./coursejobs.style";
 import { COLORS } from "../../../constants";
 import CourseJobCard from "../../common/cards/by_course/CourseJobCard";

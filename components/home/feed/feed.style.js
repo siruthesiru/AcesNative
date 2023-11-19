@@ -6,17 +6,19 @@ const styles = StyleSheet.create({
 	container: {
 		flex: 1,
 		alignItems: "center",
-		paddingTop: 10,
+		paddingVertical: 10,
+		paddingHorizontal: 10,
+		width: "100%",
 	},
 	cardContainer: {
 		height: 250,
-		width: "95%",
+		width: "90%",
 		marginVertical: 10,
 		borderColor: COLORS.gray2,
 		borderWidth: 1,
 	},
 	cover: {
-		height: "75%",
+		height: "50%",
 		width: "100%",
 	},
 	date: {

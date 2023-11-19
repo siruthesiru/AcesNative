@@ -4,7 +4,7 @@ import {
 	userAuthenticated,
 	userChangePassword,
 	verificationCodeRequestSuccess,
-} from "../app/authenticationSlice";
+} from "../app/slices/authenticationSlice";
 import axios from "axios";
 
 const axiosInstance = axios.create({

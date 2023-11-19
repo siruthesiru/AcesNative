@@ -1,11 +1,11 @@
 {
 	"expo": {
-		"name": "DCISM ACES",
-		"slug": "DCISM ACES",
+		"name": "AcesNative",
+		"slug": "AcesNative",
 		"version": "1.0.0",
 		"orientation": "portrait",
 		"icon": "./assets/images/icon.png",
-		"scheme": "com.siruburuvu.AcesNative",
+		"scheme": "com.siruburuvu.acesnative",
 		"userInterfaceStyle": "automatic",
 		"splash": {
 			"image": "./assets/images/splash.png",
@@ -21,7 +21,8 @@
 				"foregroundImage": "./assets/images/adaptive-icon.png",
 				"backgroundColor": "#ffffff"
 			},
-			"package": "com.siruburuvu.AcesNative"
+			"versionCode": 1,
+			"package": "com.siruburuvu.acesnative"
 		},
 		"web": {
 			"bundler": "metro",

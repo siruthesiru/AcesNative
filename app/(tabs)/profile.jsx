@@ -7,18 +7,10 @@ import {
 	Linking,
 	ScrollView,
 } from "react-native";
-import { Button, DataTable } from "react-native-paper";
-import {
-	Table,
-	Row,
-	Rows,
-	Cell,
-	TableWrapper,
-} from "react-native-table-component";
+import { Button } from "react-native-paper";
+import { Table } from "react-native-table-component";
 
-import DetailItem from "../job-details/item-detail/DetailItem";
 import TableRow from "../../components/home/profile/TableRow";
-import { COLORS } from "../../constants";
 
 const profilePicture = require("../../assets/images/pfp.png");
 
