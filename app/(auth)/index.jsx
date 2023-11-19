@@ -2,7 +2,6 @@ import { StyleSheet } from "react-native";
 
 import { Button } from "react-native-paper";
 
-// import EditScreenInfo from "../../components/EditScreenInfo";
 import { Text, View } from "../../components/Themed";
 import { Link, useRouter } from "expo-router";
 
