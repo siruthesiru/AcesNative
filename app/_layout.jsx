@@ -9,11 +9,12 @@ import { SplashScreen, Stack } from "expo-router";
 import { useEffect } from "react";
 import { useColorScheme } from "react-native";
 
-import { persistor, store } from "../app/slices/store";
+import { persistor, store } from "./slices/store";
 
 import { PaperProvider } from "react-native-paper";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export {
 	// Catch any errors thrown by the Layout component.
@@ -22,7 +23,7 @@ export {
 
 export const unstable_settings = {
 	// Ensure that reloading on `/modal` keeps a back button present.
-	initialRouteName: "(tabs)",
+	initialRouteName: "(auth)",
 };
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
@@ -55,16 +56,18 @@ function RootLayoutNav() {
 	const colorScheme = useColorScheme();
 
 	return (
+		// <ClerkProvider publishableKey="pk_test_Zmlyc3QtcmFjZXItNDMuY2xlcmsuYWNjb3VudHMuZGV2JA">
 		<Provider store={store}>
 			<PersistGate loading={null} persistor={persistor}>
 				<PaperProvider>
 					<ThemeProvider
 						value={colorScheme === "dark" ? DarkTheme : DefaultTheme}
 					>
+						{/* <SafeAreaView> */}
 						<Stack>
 							<Stack.Screen name="(auth)" options={{ headerShown: false }} />
-							<Stack.Screen name="(tabs)" options={{ headerShown: false }} />
 
+							<Stack.Screen name="(tabs)" options={{ headerShown: false }} />
 							<Stack.Screen
 								name="faq"
 								options={{
@@ -74,9 +77,11 @@ function RootLayoutNav() {
 								}}
 							/>
 						</Stack>
+						{/* </SafeAreaView> */}
 					</ThemeProvider>
 				</PaperProvider>
 			</PersistGate>
 		</Provider>
+		// </ClerkProvider>
 	);
 }

@@ -13,18 +13,10 @@ import {
 
 import { COLORS } from "../../../constants";
 
-const TableRow = ({ itemName, itemValue }) => {
+const SkillsRow = ({ itemName, itemValue }) => {
 	return (
 		<View>
 			<TableWrapper style={styles.tableRow}>
-				<Text>
-					<Cell
-						data={itemName}
-						style={styles.profileField}
-						textStyle={{ fontSize: 14 }}
-					/>
-				</Text>
-
 				<Text>
 					<Cell
 						data={itemValue}
@@ -41,7 +33,7 @@ const TableRow = ({ itemName, itemValue }) => {
 	);
 };
 
-export default TableRow;
+export default SkillsRow;
 
 const styles = StyleSheet.create({
 	tableRow: {

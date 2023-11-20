@@ -30,6 +30,7 @@ export default function TabLayout() {
 				name="index"
 				options={{
 					title: "Feed",
+
 					headerTitle: "News and Events",
 					headerTitleAlign: "center",
 					tabBarIcon: ({ color }) => (

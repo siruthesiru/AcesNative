@@ -6,7 +6,7 @@ import { View, Text } from "../../../components/Themed";
 import styles from "./coursejobs.style";
 import { COLORS } from "../../../constants";
 import CourseJobCard from "../../common/cards/by_course/CourseJobCard";
-import useFetch from "../../../hook/useFetch";
+import useFetch from "../../../hooks/useFetch";
 
 const Coursejobs = () => {
 	const router = useRouter();

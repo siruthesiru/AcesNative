@@ -1,11 +1,12 @@
 import React from "react";
 import { useRouter } from "expo-router";
-import { View, Text, TouchableOpacity, ActivityIndicator } from "react-native";
+import { TouchableOpacity, ActivityIndicator } from "react-native";
+import { View, Text } from "../../../components/Themed";
 
 import styles from "./pendingapplications.style";
 import { COLORS } from "../../../constants";
 import PendingApplicationCard from "../../common/cards/pending/PendingApplicationCard";
-import useFetch from "../../../hook/useFetch";
+import useFetch from "../../../hooks/useFetch";
 
 const PendingApplications = () => {
 	const router = useRouter();

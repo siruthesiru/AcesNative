@@ -6,11 +6,13 @@ import {
 	Pressable,
 	Linking,
 	ScrollView,
+	FlatList,
 } from "react-native";
 import { Button } from "react-native-paper";
 import { Table } from "react-native-table-component";
 
 import TableRow from "../../components/home/profile/TableRow";
+import SkillsRow from "../../components/home/profile/SkillsRow";
 
 const profilePicture = require("../../assets/images/pfp.png");
 
@@ -33,6 +35,9 @@ export default function ProfileScreen() {
 		occupation: "N/A",
 		skills: ["React Native", "Dart", "Node"],
 	};
+
+	const data = userDetails;
+
 	return (
 		<ScrollView showsVerticalScrollIndicator={false}>
 			<View style={styles.container}>
@@ -104,10 +109,16 @@ export default function ProfileScreen() {
 						darkColor="rgba(255,255,255,0.1)"
 					/>
 					<Text style={styles.subtitle}>Skills Information</Text>
-					<Table style={styles.table}>
-						<TableRow itemName="Skills" itemValue={userDetails.skills[0]} />
-						<TableRow itemName="" itemValue={userDetails.skills[1]} />
-						<TableRow itemName="" itemValue={userDetails.skills[2]} />
+					<Table style={styles.skillsTable}>
+						<TableRow itemName="Skills" itemValue="" />
+						<FlatList
+							data={userDetails.skills}
+							keyExtractor={(item) => item}
+							// contentContainerStyle={{ columnGap: SIZES.small }}
+							renderItem={({ item }) => (
+								<SkillsRow itemName="" itemValue={item} />
+							)}
+						/>
 					</Table>
 
 					<View
@@ -199,6 +210,12 @@ const styles = StyleSheet.create({
 	table: {
 		borderWidth: 0,
 		marginLeft: "10%",
+	},
+	skillsTable: {
+		borderWidth: 0,
+		marginLeft: "10%",
+		flex: 1,
+		flexDirection: "row",
 	},
 	tableHeader: {
 		display: "none",

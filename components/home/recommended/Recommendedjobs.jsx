@@ -7,7 +7,7 @@ import { View, Text } from "../../../components/Themed";
 import styles from "./recommendedjobs.style";
 import { COLORS, SIZES } from "../../../constants";
 import RecommendedJobCard from "../../common/cards/recommended/RecommendedJobCard";
-import useFetch from "../../../hook/useFetch";
+import useFetch from "../../../hooks/useFetch";
 
 const Recommendedjobs = () => {
 	const router = useRouter();

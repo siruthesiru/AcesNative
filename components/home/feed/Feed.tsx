@@ -47,7 +47,19 @@ export default function Feed() {
 		<ScrollView showsVerticalScrollIndicator={false}>
 			<View style={styles.container}>
 				{news.map((item) => (
-					<Link key={item.id} href={`../${item.id}`}>
+					<Link
+						key={item.id}
+						href={{
+							pathname: "/news-details/[id]",
+							params: {
+								id: item.id,
+								title: item.title,
+								data: item.date,
+								description: item.description,
+							},
+						}}
+						asChild
+					>
 						<Card style={styles.cardContainer}>
 							<Card.Cover
 								style={styles.cover}

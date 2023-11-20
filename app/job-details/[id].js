@@ -21,7 +21,7 @@ import { Text, View } from "../../components/Themed";
 import DetailItem from "../job-details/item-detail/DetailItem";
 
 import { COLORS, SIZES } from "../../constants";
-import useFetch from "../../hook/useFetch";
+import useFetch from "../../hooks/useFetch";
 
 const JobDetails = () => {
 	const params = useSearchParams();

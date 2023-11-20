@@ -9,36 +9,38 @@ import { checkImageURL } from "../../utils";
 import {
 	headerBackButtonMenuEnabled,
 	ScrollView,
-	Platform,
 	StyleSheet,
 	Image,
-	ActivityIndicator,
-	RefreshControl,
 	Linking,
 } from "react-native";
 
 import { Text, View } from "../../components/Themed";
-import DetailItem from "../job-details/item-detail/DetailItem";
+import DetailItem from "../news-details/item-detail/DetailItem";
 
 import { COLORS, SIZES } from "../../constants";
-import useFetch from "../../hook/useFetch";
+import useFetch from "../../hooks/useFetch";
 
-const JobDetails = () => {
-	const params = useSearchParams();
-	const router = useRouter();
+const AnnouncementDetails = ({ route }) => {
+	if (!route) {
+		return null;
+	} else {
+		const { newsId, newsTitle, newsDate, newsDescription } = route;
+	}
 
-	const { data, isLoading, error, refetch } = useFetch("job-details", {
-		job_id: params.id,
-	});
+	// const params = useSearchParams();
+	// const router = useRouter();
 
-	const [refreshing, setRefreshing] = useState(false);
+	// const { data, isLoading, error, refetch } = useFetch("props", {
+	// 	news_id: params.id,
+	// });
+	// const [refreshing, setRefreshing] = useState(false);
+	// const onRefresh = useCallback(() => {
+	// 	setRefreshing(true);
+	// 	refetch();
+	// 	setRefreshing(false);
+	// }, []);
 
-	const onRefresh = useCallback(() => {
-		setRefreshing(true);
-		refetch();
-		setRefreshing(false);
-	}, []);
-
+	console.log(newsId);
 	return (
 		<View style={styles.container}>
 			<Stack.Screen
@@ -47,93 +49,65 @@ const JobDetails = () => {
 					headerShadowVisible: false,
 					headerBackButtonMenuEnabled,
 					headerTitle:
-						data && data.length > 0
-							? data[0].job_title + " for " + data[0].employer_name
-							: "Job Details",
+						newsTitle && newsTitle.length > 0
+							? props.newsTitle
+							: "Announcement Details",
 				}}
 			/>
-			<ScrollView
-				showsVerticalScrollIndicator={false}
-				refreshControl={
-					<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
-				}
-			>
-				{isLoading ? (
-					<ActivityIndicator size="large" color={COLORS.primary} />
-				) : error ? (
-					<Text>Something went wrong</Text>
-				) : data && data.length > 0 ? (
-					<View style={styles.detailsContainer}>
-						<View style={styles.logoContainer}>
-							<Image
-								style={styles.logo}
-								source={{
-									uri: checkImageURL(data[0].employer_logo)
-										? data[0].employer_logo
-										: "https://t4.ftcdn.net/jpg/05/05/61/73/360_F_505617309_NN1CW7diNmGXJfMicpY9eXHKV4sqzO5H.jpg",
-								}}
-								resizeMode="contain"
-							/>
-						</View>
-
-						<View style={styles.detailsHeader}>
-							<Text style={styles.title}>{data[0].job_title}</Text>
-							<Text>
-								{data[0].employer_name} · Cebu, Central Visayas · Philippines
-							</Text>
-						</View>
-
-						<View style={styles.detailsSection}>
-							{/* <Text>{data[0].job_required_skills}</Text> */}
-							<Text style={styles.subtitle}>About the Job</Text>
-
-							<DetailItem itemName="Available Slots" itemValue="10/10" />
-							<DetailItem
-								itemName="Available Until"
-								itemValue="December 10, 2023"
-							/>
-							<DetailItem
-								itemName="Offered Salary"
-								itemValue="₱ 30,000.00 - 50,000.00"
-							/>
-							<DetailItem itemName={`Years of Exp. \t`} itemValue="0" />
-							<DetailItem itemName="Resume Required" itemValue="Yes" />
-
-							<View
-								style={styles.separator}
-								lightColor="#eee"
-								darkColor="rgba(255,255,255,0.3)"
-							/>
-
-							<Text>{data[0].job_description}</Text>
-
-							<View
-								style={styles.separator}
-								lightColor="#eee"
-								darkColor="rgba(255,255,255,0.3)"
-							/>
-
-							<Button
-								// icon="camera"
-								mode="contained"
-								onPress={() => Linking.openURL(data[0].job_apply_link)}
-							>
-								Apply Now
-							</Button>
-						</View>
+			<ScrollView showsVerticalScrollIndicator={false}>
+				<View style={styles.detailsContainer}>
+					<View style={styles.logoContainer}>
+						<Image
+							style={styles.logo}
+							source="https://t4.ftcdn.net/jpg/05/05/61/73/360_F_505617309_NN1CW7diNmGXJfMicpY9eXHKV4sqzO5H.jpg"
+							resizeMode="contain"
+						/>
 					</View>
-				) : (
-					<Text>No data available</Text>
-				)}
+					<View style={styles.detailsHeader}>
+						<Text style={styles.title}>{newsTitle}</Text>
+						<Text></Text>
+					</View>
+					<View style={styles.detailsSection}>
+						<Text style={styles.subtitle}>About the Job</Text>
+						<DetailItem itemName="Available Slots" itemValue="10/10" />
+						<DetailItem
+							itemName="Available Until"
+							itemValue="December 10, 2023"
+						/>
+						<DetailItem
+							itemName="Offered Salary"
+							itemValue="₱ 30,000.00 - 50,000.00"
+						/>
+						<DetailItem itemName={`Years of Exp. \t`} itemValue="0" />
+						<DetailItem itemName="Resume Required" itemValue="Yes" />
+						<View
+							style={styles.separator}
+							lightColor="#eee"
+							darkColor="rgba(255,255,255,0.3)"
+						/>
+						<Text>{}</Text>
+						<View
+							style={styles.separator}
+							lightColor="#eee"
+							darkColor="rgba(255,255,255,0.3)"
+						/>
+						<Button
+							// icon="camera"
+							mode="contained"
+							onPress={() => Linking.openURL()}
+						>
+							Apply Now
+						</Button>
+					</View>
+				</View>
 			</ScrollView>
-
 			{/* Use a light status bar on iOS to account for the black space above the modal */}
-			<StatusBar style={Platform.OS === "ios" ? "light" : "auto"} />
+			{/* <StatusBar style={Platform.OS === "ios" ? "light" : "auto"} /> */}
 		</View>
 	);
 };
 
-export default JobDetails;
+export default AnnouncementDetails;
 
 const styles = StyleSheet.create({
 	container: {

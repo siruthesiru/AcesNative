@@ -52,59 +52,6 @@ export default function TabLayout() {
 					headerTitleAlign: "center",
 				}}
 			/>
-			{/* <Tabs.Screen
-				name="jobs"
-				options={{
-					title: "Jobs",
-					headerTitleAlign: "center",
-					tabBarIcon: ({ color }) => (
-						<TabBarIcon name="briefcase" color={color} />
-					),
-				}}
-			/>
-			<Tabs.Screen
-				name="notifications"
-				options={{
-					title: "Notifications",
-					headerTitleAlign: "center",
-					tabBarIcon: ({ color }) => <TabBarIcon name="bell" color={color} />,
-				}}
-			/>
-			<Tabs.Screen
-				name="applications"
-				options={{
-					title: "Applications",
-					headerTitleAlign: "center",
-					headerTitle: "Job Applications",
-					tabBarIcon: ({ color }) => (
-						<TabBarIcon name="black-tie" color={color} />
-					),
-				}}
-			/>
-			<Tabs.Screen
-				name="profile"
-				options={{
-					title: "Profile",
-					headerTitleAlign: "center",
-					tabBarIcon: ({ color }) => (
-						<TabBarIcon name="user-circle-o" color={color} />
-					),
-					headerRight: () => (
-						<Link href="/faq" asChild>
-							<Pressable>
-								{({ pressed }) => (
-									<FontAwesome
-										name="question-circle"
-										size={25}
-										color={Colors[colorScheme ?? "light"].text}
-										style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
-									/>
-								)}
-							</Pressable>
-						</Link>
-					),
-				}}
-			/> */}
 		</Stack>
 	);
 }
