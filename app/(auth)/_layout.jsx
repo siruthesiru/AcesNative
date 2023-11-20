@@ -52,6 +52,13 @@ export default function TabLayout() {
 					headerTitleAlign: "center",
 				}}
 			/>
+			<Stack.Screen
+				name="forgot"
+				options={{
+					title: "Forgot Password",
+					headerTitleAlign: "center",
+				}}
+			/>
 		</Stack>
 	);
 }

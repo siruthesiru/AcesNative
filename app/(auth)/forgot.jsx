@@ -1,15 +1,80 @@
-import { StyleSheet } from "react-native";
+import React, { useState } from "react";
+import { StyleSheet, ScrollView } from "react-native";
+import { useDispatch, useSelector } from "react-redux";
+import { Formik } from "formik";
 
-// import EditScreenInfo from "../../components/EditScreenInfo";
+import { SignIn } from "../../services/authentication";
+import { clearMessage } from "../../app/slices/authenticationSlice";
+
 import { Text, View } from "../../components/Themed";
-
-// import Feed from "../../components/home/feed/Feed";
+import { TextInput, Divider, Button } from "react-native-paper";
 
 export default function ForgotPassword() {
+	// const submitForm = (event) => {
+	// 	// event.preventDefault();
+	// 	SignIn(dispatch, { Email, Password });
+	// };
+
+	const { message } = useSelector((state) => state.authentication);
+	const [Email, setEmail] = useState("");
+	const [Password, setPassword] = useState("");
+
+	const dispatch = useDispatch();
+
+	const [showPassWord, setShowPassword] = useState(false);
+
 	return (
-		<View style={styles.container}>
-			<Text>Forgot password</Text>
-		</View>
+		<ScrollView>
+			<View style={styles.container}>
+				<View style={styles.form}>
+					<Formik
+						required
+						initialValues={{ Email: "", Password: "" }}
+						onSubmit={(values) => SignIn(dispatch, { Email, Password })}
+					>
+						{({ handleChange, handleBlur, handleSubmit, values }) => (
+							<View>
+								<TextInput
+									style={styles.input}
+									onChangeText={handleChange("Email")}
+									onBlur={handleBlur("Email")}
+									value={values.Email}
+									placeholder="Email"
+									required
+								/>
+								<Button
+									onPress={handleSubmit}
+									style={styles.buttons}
+									title="Submit"
+									mode="contained"
+								>
+									Change Password
+								</Button>
+							</View>
+						)}
+					</Formik>
+
+					<Divider></Divider>
+
+					<Text>Don't have an account yet?</Text>
+					<Button
+						style={styles.buttons}
+						mode="outlined"
+						onPress={() => router.push("./register")}
+					>
+						Register
+					</Button>
+					<Text>or</Text>
+					<Button
+						style={styles.buttons}
+						mode="text"
+						onPress={() => router.push("./forgot")}
+					>
+						Login
+					</Button>
+				</View>
+			</View>
+		</ScrollView>
 	);
 }
 
@@ -18,6 +83,8 @@ const styles = StyleSheet.create({
 		flex: 1,
 		alignItems: "center",
 		justifyContent: "center",
+		width: "100%",
+		paddingTop: 300,
 	},
 	title: {
 		fontSize: 20,
@@ -27,5 +94,17 @@ const styles = StyleSheet.create({
 		marginVertical: 30,
 		height: 1,
 		width: "80%",
+	},
+	buttons: {
+		marginVertical: 15,
+	},
+	input: {
+		marginVertical: 5,
+	},
+	form: {
+		flex: 1,
+		width: "70%",
+		justifyContent: "center",
+		height: "100%",
 	},
 });

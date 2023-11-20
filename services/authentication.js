@@ -99,6 +99,7 @@ export const SignIn = async (dispatch, credentials) => {
 	try {
 		const response = await axiosInstance.post("/signin", credentials);
 		if (response.data.isSucceed) {
+			console.log("Successfully Logged In");
 			dispatch(
 				userAuthenticated({
 					isAccess: response.data.isAccess,

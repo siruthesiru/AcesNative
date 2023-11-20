@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export const authenticationSlice = createSlice({
 	name: "authentication",
@@ -18,15 +17,15 @@ export const authenticationSlice = createSlice({
 	},
 	reducers: {
 		userAuthenticated: (state, action) => {
-			AsyncStorage.setItem("isAccess", action.payload.isAccess);
-			AsyncStorage.setItem("isSucceed", action.payload.isSucceed);
-			AsyncStorage.setItem("token", action.payload.token);
-			AsyncStorage.setItem("email", action.payload.email);
-			AsyncStorage.setItem("firstName", action.payload.firstName);
-			AsyncStorage.setItem("lastName", action.payload.lastName);
-			AsyncStorage.setItem("role", action.payload.role);
-			AsyncStorage.setItem("isAlumniGoogle", action.payload.role);
-			AsyncStorage.setItem("isCompanyGoogle", action.payload.role);
+			setItem("isAccess", action.payload.isAccess);
+			setItem("isSucceed", action.payload.isSucceed);
+			setItem("token", action.payload.token);
+			setItem("email", action.payload.email);
+			setItem("firstName", action.payload.firstName);
+			setItem("lastName", action.payload.lastName);
+			setItem("role", action.payload.role);
+			setItem("isAlumniGoogle", action.payload.role);
+			setItem("isCompanyGoogle", action.payload.role);
 
 			state.isAccess = action.payload.isAccess;
 			state.token = action.payload.token;
@@ -49,11 +48,11 @@ export const authenticationSlice = createSlice({
 			state.token = null;
 		},
 		logout: () => {
-			AsyncStorage.clear();
+			clear();
 			return initialState;
 		},
 		clearAccount: () => {
-			AsyncStorage.clear();
+			clear();
 			return initialState;
 		},
 		forgotPasswordRequestSuccess: (state, action) => {

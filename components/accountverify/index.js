@@ -1,5 +1,8 @@
 import React, { useEffect } from "react";
 import { router } from "expo-router";
+
+import { View, Text } from "../../components/Themed";
+
 import {
 	Alert,
 	AlertTitle,
@@ -8,6 +11,7 @@ import {
 	Typography,
 } from "react-native-paper";
 import { useDispatch } from "react-redux";
+
 import {
 	clearForgotPasswordRequestStatus,
 	clearAccount,
@@ -35,30 +39,26 @@ const AccountVerify = () => {
 	};
 
 	return (
-		<Container maxWidth="sm">
-			<div style={{ marginTop: "2rem", textAlign: "center" }}>
-				<Alert severity="success">
-					<AlertTitle>Success</AlertTitle>
-					Wait for the department to verify your credentials. You will receive
-					an email notification once the process is complete. —{" "}
-					<strong>Wait for Verification!</strong>
-				</Alert>
+		<View>
+			<Alert severity="success">
+				<AlertTitle>Success</AlertTitle>
+				Wait for the department to verify your credentials. You will receive an
+				email notification once the process is complete. — Wait for
+				Verification!
+			</Alert>
 
-				<Typography variant="body2" style={{ marginTop: "1rem" }}>
-					Thank you for signing up.
-				</Typography>
+			<Text>Thank you for signing up.</Text>
 
-				<Button
-					variant="contained"
-					color="primary"
-					onClick={handleNavigateToLogin}
-					style={{ marginTop: "1rem" }}
-					// startIcon={<FirstPage />}
-				>
-					Back to Login
-				</Button>
-			</div>
-		</Container>
+			<Button
+				variant="contained"
+				color="primary"
+				onClick={handleNavigateToLogin}
+				style={{ marginTop: "1rem" }}
+				// startIcon={<FirstPage />}
+			>
+				Back to Login
+			</Button>
+		</View>
 	);
 };
 

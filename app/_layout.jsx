@@ -1,3 +1,9 @@
+import { Provider, useSelector } from "react-redux";
+import { persistor, store } from "./slices/store";
+import { PersistGate } from "redux-persist/integration/react";
+
+import { SWRConfig } from "swr";
+
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import {
 	DarkTheme,
@@ -6,15 +12,16 @@ import {
 } from "@react-navigation/native";
 import { useFonts } from "expo-font";
 import { SplashScreen, Stack } from "expo-router";
-import { useEffect } from "react";
+import { StrictMode, useEffect } from "react";
 import { useColorScheme } from "react-native";
 
-import { persistor, store } from "./slices/store";
+import { fetcher } from "../utils/fetcher";
 
 import { PaperProvider } from "react-native-paper";
-import { Provider } from "react-redux";
-import { PersistGate } from "redux-persist/integration/react";
+
 import { SafeAreaView } from "react-native-safe-area-context";
+
+import AccountVerify from "../components/accountverify";
 
 export {
 	// Catch any errors thrown by the Layout component.
@@ -49,39 +56,57 @@ export default function RootLayout() {
 		return null;
 	}
 
-	return <RootLayoutNav />;
+	return (
+		<Provider store={store}>
+			<RootLayoutNav />
+		</Provider>
+	);
 }
 
 function RootLayoutNav() {
 	const colorScheme = useColorScheme();
 
-	return (
-		// <ClerkProvider publishableKey="pk_test_Zmlyc3QtcmFjZXItNDMuY2xlcmsuYWNjb3VudHMuZGV2JA">
-		<Provider store={store}>
-			<PersistGate loading={null} persistor={persistor}>
-				<PaperProvider>
-					<ThemeProvider
-						value={colorScheme === "dark" ? DarkTheme : DefaultTheme}
-					>
-						{/* <SafeAreaView> */}
-						<Stack>
-							<Stack.Screen name="(auth)" options={{ headerShown: false }} />
+	const { isSucceed, role, isAccess } = useSelector(
+		(state) => state.authentication
+	);
 
-							<Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-							<Stack.Screen
-								name="faq"
-								options={{
-									presentation: "modal",
-									headerTitle: "Frequently Asked Questions",
-									headerTitleAlign: "center",
+	const isAuthorized = role === "ALUMNI";
+
+	if (!isAccess) {
+		if (!isAuthorized || !isSucceed) {
+			screenToRender = <Stack.Screen name="(auth)" />;
+		} else {
+			screenToRender = <AccountVerify />;
+		}
+	} else {
+		if (isAccess) {
+			screenToRender = <Stack.Screen name="(tabs)" />;
+		}
+	}
+
+	return (
+		<SWRConfig
+			value={{
+				fetcher,
+			}}
+		>
+			<StrictMode>
+				<Provider store={store}>
+					<PaperProvider>
+						<ThemeProvider
+							value={colorScheme === "dark" ? DarkTheme : DefaultTheme}
+						>
+							<Stack
+								screenOptions={{
+									headerShown: false,
 								}}
-							/>
-						</Stack>
-						{/* </SafeAreaView> */}
-					</ThemeProvider>
-				</PaperProvider>
-			</PersistGate>
-		</Provider>
-		// </ClerkProvider>
+							>
+								{screenToRender}
+							</Stack>
+						</ThemeProvider>
+					</PaperProvider>
+				</Provider>
+			</StrictMode>
+		</SWRConfig>
 	);
 }
